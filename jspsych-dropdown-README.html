@@ -330,11 +330,13 @@ kbd {
 
 <h2 id="toc_0">jspsych-dropdown plugin</h2>
 
-<p>The dropdown plugin displays questions with the options as a dropdown menu. The plugin requires you to specify whether the user can select only one option per question, or multiple options.</p>
+<p>The dropdown plugin displays questions with the options as a dropdown menu. As the user types into the dropdown menu, the plugin narrows down the options based on the user input. The plugin requires the researcher to specify whether the user can select only one option per question, or multiple options.</p>
 
 <h3 id="toc_1">Parameters</h3>
 
-<p>This table lists the parameters associated with this plugin. Parameters with the default value of <em>undefined</em> must be specified. </p>
+<p>The following table lists the parameters associated with this plugin. Parameters with the default value of <em>undefined</em> must be specified. All of the parameters for each question are enclosed in an object. If there is a single question in a trial, <code>questions</code> is an array that contains one object with all the parameters for that question. If there are multiple questions in the trial, <code>questions</code> becomes an array of objects with each object holding the specific parameters for the question it contains.                 </p>
+
+<p><strong>NOTE</strong>: The following parameters need to be specified for every question separately, even when there are multiple questions in a single trial (see example below). This allows for customizable placeholders for each question. It also makes it possible to have questions that allow multiple selections, and questions that do not allow multiple selections on the same page.</p>
 
 <table>
 <thead>
@@ -348,40 +350,34 @@ kbd {
 
 <tbody>
 <tr>
-<td>questions</td>
-<td style="text-align: center">array of objects</td>
-<td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">Each object in the array specifies the unique parameters for each question displayed as part of the trial.</td>
-</tr>
-<tr>
 <td>text</td>
 <td style="text-align: center">string</td>
 <td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">A property of the questions object; specifies the text of a question.</td>
+<td style="text-align: left">Specifies the text of a question.</td>
 </tr>
 <tr>
 <td>options</td>
 <td style="text-align: center">array</td>
 <td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">A property of the questions object; specifies the possible answers as separate strings.</td>
+<td style="text-align: left">Specifies the possible answers as separate strings.</td>
 </tr>
 <tr>
 <td>allowMultipleSelections</td>
 <td style="text-align: center">boolean</td>
 <td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">A property of the questions object; specifies whether multiple selections are allowable for the particular question.</td>
+<td style="text-align: left">Specifies whether multiple selections are allowable for the particular question.</td>
 </tr>
 <tr>
 <td>required</td>
 <td style="text-align: center">boolean</td>
 <td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">A property of the questions object; specifies whether the question is required or optional.</td>
+<td style="text-align: left">Specifies whether the question is required or optional.</td>
 </tr>
 <tr>
 <td>placeholder</td>
 <td style="text-align: center">string</td>
 <td style="text-align: center"><em>undefined</em></td>
-<td style="text-align: left">A property of the questions object; specifies the placeholder for the dropdown menu.</td>
+<td style="text-align: left">Specifies the placeholder for the dropdown menu.</td>
 </tr>
 </tbody>
 </table>
@@ -432,6 +428,14 @@ kbd {
   allowMultipleSelections: false,
   required: true,
   placeholder: &#39;Select gender&#39;
+
+},
+{
+  text: &#39;Your native langauge(s) learned from birth (if not listed choose &#39;other&#39;):&#39;,
+  options: [&quot;Chinese&quot;, &quot;English&quot;, &quot;French&quot;, &quot;German&quot;, &quot;Italian&quot;, &quot;Spanish&quot;],
+  allowMultipleSelections: true,
+  required: true,
+  placeholder: &#39;Select language(s)&#39;
 
 }]};
 </code></pre></div>
